@@ -1,0 +1,41 @@
+<div class="FormWrapper">
+ <section class="FormContainer">
+  <h2>新規登録</h2>
+  <%=form_with model:@room do |f|%>
+   <table>
+    <tr>
+     <th><%=f.label :title,"施設名"%></th>
+     <td><%=f.text_field :title%></td>
+    </tr>
+
+    <tr>
+     <th><%=f.label :about,"施設詳細"%></th>
+     <td><%=f.text_area :about%></td>
+    </tr>
+
+    <tr>
+     <th><%=f.label :price,"料金"%></th>
+     <td><%=f.text_field :price%></td>
+    </tr>
+
+    <tr>
+     <th><%=f.label :adress,"住所"%></th>
+     <td><%=f.text_field :adress%></td>
+    </tr>
+
+    <tr>
+     <th><%=f.label :img,"画像"%></th>
+     <td><%=f.file_field :img%></td>
+    </tr>
+   </table>
+   <%=f.hidden_field :user_id, value:current_user%>
+
+   <div>
+    <ul>
+     <li><%=f.submit"保存"%></li>
+     <li><%=link_to "キャンセル",:rooms %></li>
+    </ul>
+   </div>
+  <%end%>
+ </section>
+</div>

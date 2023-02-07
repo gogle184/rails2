@@ -1,0 +1,47 @@
+<div class="FirstView">
+ <section class="Container">
+  <h2 class="FirstView_title">
+   まだ体験したことのない
+   <br>
+   旅をしよう
+  </h2>
+  <div class="FirstViewSearch">
+   <%= search_form_for @q, url: search_rooms_path do |f|%>
+    <div class="Search_Field">
+    <%= f.search_field :adress_cont, placeholder:"エリアを入力"%>
+    </div>
+    <br>
+    <div class="FirstViewSerach_button">
+     <%=f.submit "検索"%>
+    </div>
+  <%end%>
+  </div>
+ </section>
+</div>
+
+<div class="container">
+ <section class="RecommendAreaSection">
+  <h2 class="RecommendArea_title">おすすめエリア</h2>
+  <div class="ReacommendAreas">
+   <div class="RecommendArea RecommendedArea--tokyo">
+   <%= link_to image_tag("tokyo.png",width: "240px",height: "140px") ,search_rooms_path(q: {adress_cont: "東京"}) %>
+   <span>東京</span>
+   </div>
+
+   <div class="RecommendArea RecommendedArea--osaka">
+   <%= link_to image_tag("osaka.png",width: "240px",height: "140px") ,search_rooms_path(q: {adress_cont: "大阪"}) %>
+   <span>大阪</span>
+   </div>
+
+   <div class="RecommendArea RecommendedArea--kyoto">
+   <%= link_to image_tag("kyoto.png",width: "240px",height: "140px") ,search_rooms_path(q: {adress_cont: "京都"}) %>
+   <span>京都</span>
+   </div>
+
+   <div class="RecommendArea RecommendedArea--sapporo">
+   <%= link_to image_tag("sapporo.png",width: "240px",height: "140px") ,search_rooms_path(q: {adress_cont: "札幌"}) %>
+   <span>札幌</span>
+   </div>
+  </div>
+ </section>
+</div>

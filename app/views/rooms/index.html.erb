@@ -1,0 +1,35 @@
+<section class="container OwnerRoomsContainer">
+ <h2>登録済み施設一覧</h2>
+ <div class="table-responsive">
+
+  <% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+ 
+  <table class="table">
+   <thead>
+    <tr>
+     <th>画像</th>
+     <th>施設名</th>
+     <th>紹介文</th>
+     <th>料金</th>
+     <th>住所</th>
+     <th>作成日</th>
+     <th></th>
+    </tr>
+   </thead>
+   <tbody>
+    <% @rooms.each do |room|%>
+     <tr>
+      <td><%=image_tag room.img_url,size: "200x150"%></td>
+      <td><%=link_to"#{room.title}",{controller: 'rooms', action: 'show', id: room.id}%></td>
+      <td><%=room.about%></td>
+      <td><%=room.price%></td>
+      <td><%=room.adress%></td>
+      <td><%=room.created_at.to_s(:datetime_jp)%></td>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
+</section>

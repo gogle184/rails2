@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  about: MyString
+  price: 1
+  adress: MyString
+  img: MyString
+  start_date: 2023-02-05
+  end_date: 2023-02-05
+  people: 1
+  total_price: 1
+  total_day: 1
+  room_id: 1
+  user_id: 1
+
+two:
+  title: MyString
+  about: MyString
+  price: 1
+  adress: MyString
+  img: MyString
+  start_date: 2023-02-05
+  end_date: 2023-02-05
+  people: 1
+  total_price: 1
+  total_day: 1
+  room_id: 1
+  user_id: 1

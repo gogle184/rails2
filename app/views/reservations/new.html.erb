@@ -1,0 +1,29 @@
+<h2>予約確認</h2>
+
+<dl>
+ <dt>チェックイン</dt>
+ <dd><%= @reservation.start_date%></dd>
+ <dt>チェックアウト</dt>
+ <dd><%= @reservation.end_date%></dd>
+ <dt>宿泊日数</dt>
+ <dd><%=@reservation.total_day%></dd>
+ <dt>人数</dt>
+ <dd><%= @reservation.people%></dd>
+ <dt>合計金額</dt>
+ <dd><%= @reservation.total_price=@room.price.to_i*@reservation.people*@reservation.total_day%></dd>
+</dl>
+
+<%= form_with model: @reservation, local: true do |f| %>
+
+  <%=f.hidden_field :room_id, value:@room.id%>
+  <%=f.hidden_field :user_id, value:current_user.id%>
+  <%=f.hidden_field :total_price, :value=>@reservation.total_price%>
+  <%=f.hidden_field :title, :value=>@room.title%>
+  <%=f.hidden_field :img, :value=>@room.img%>
+  <%=f.hidden_field :about, value:@room.about%>
+  <%=f.hidden_field :start_date, :value=>@reservation.start_date%>
+  <%=f.hidden_field :end_date, :value=>@reservation.end_date%>
+
+<p>上記でよろしければ「確定」ボタンを押してください</p>
+<%=f.submit "予約を確定する"%>
+<%end%>

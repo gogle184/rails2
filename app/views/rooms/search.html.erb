@@ -1,0 +1,39 @@
+  <div class="SearchRooms_FormContainer">
+   <%= search_form_for @q, url: search_rooms_path do |f|%>
+    <div class="Search_Field">
+    <%= f.search_field :adress_cont, placeholder:"エリアを入力"%>
+    <%= f.search_field :title_or_about_cont, placeholder:"キーワードを入力"%>
+    </div>
+    <br>
+    <div class="SearchRooms_button">
+     <%=f.submit "検索"%>
+    </div>
+  <%end%>
+  </div>
+
+  <div class="container RoomsContainer">
+   <p class="RoomsContainer_result">
+   <h2>検索結果: <%= @results.count(:id)%>件見つかりました</h2>
+   </p>
+
+   <ul class="table-responsive">
+   <% @results.each do |r|%>
+    <li class="Room">
+     <% if r.img%>
+      <%=image_tag r.img.url, size:"120x70"%>
+     <%else%>
+      <img src="https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png" class="room_image" alt="デフォルト">
+     <%end%>
+     <div class="RoomWrapper">
+     <p class="Room_Name"><%=r.title%></p>
+     <p class="Room_Adress"><%=r.adress%></p>
+     <p class="Room_About"><%=r.about%></p>
+     <div class="Room_Footer">
+      <p class="Room_Price">¥<%=r.price%></p>
+      <%=link_to "詳細はこちら", room_path(r) %>
+     </div>
+     <%end%>
+     </div> 
+    </li>
+   </ul>
+  </div>
