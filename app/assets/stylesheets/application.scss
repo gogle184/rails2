@@ -40,7 +40,7 @@ header{
 
 .Navbar{
     background-color:#FFFFFF;
-    height: 80px;
+    height: 90px;
 }
 
 .navbar{
@@ -149,4 +149,15 @@ header{
     height: 30px;
     border-radius: 100px;
     object-fit: cover;
+}
+
+.table-responsive{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.Room{
+    background-color: #f5f5f5;
+    border-radius: 26px;
+    width:17%;
 }

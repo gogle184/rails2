@@ -17,7 +17,7 @@
    <tbody>
     <% @reservations.each do |reservation|%>
     <tr>
-     <td><%=image_tag (reservation.img.url),size:"200x150"%></td>
+     <td><%=image_tag (reservation.room.img.url),size:"200x150"%></td>
      <td><%=reservation.title%></td>
      <td><%=reservation.about%></td>
      <td>¥<%=reservation.total_price%></td>

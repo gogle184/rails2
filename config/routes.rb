@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'users/show'
-  #resources :users
   resources :reservations
   resources :rooms do
     collection do
@@ -22,8 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   root 'home#index'
   get 'home/index'
-  post 'reservations/confirm'
-
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -2,18 +2,16 @@ class RoomsController < ApplicationController
   before_action :set_q, only:[:index, :search]
   before_action :authenticate_user,{only:[:create,:edit,:update]}
   def index
-    @rooms=Room.all
+    @rooms=Room.where(user_id: current_user).includes(:user).order("created_at DESC")
     @user=current_user
   end
 
   def new
-    @user=current_user
     @room=Room.new
   end
 
   def create
-    @user=current_user
-    @room=Room.new(room_params)
+    @room=Room.new(**room_params,user_id: current_user.id)
     if @room.save
       flash[:notice]="情報を登録しました"
       redirect_to :rooms
@@ -24,7 +22,6 @@ class RoomsController < ApplicationController
 
   def show
     @user=current_user
-    @rooms=Room.all
     @room=Room.find(params[:id])
     @reservation = Reservation.new
   end

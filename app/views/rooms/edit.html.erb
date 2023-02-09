@@ -3,6 +3,7 @@
   <h2>編集</h2>
   
   <%=form_with model:@room do |f|%>
+  <%= render "shared/error", obj: f.object %>
    <table>
     <tr>
      <th><%=f.label :title,"施設名"%></th>

@@ -1,5 +1,5 @@
 <h2>予約確認</h2>
-
+<%= form_with model: @reservation, local: true do |f| %>
 <dl>
  <dt>チェックイン</dt>
  <dd><%= @reservation.start_date%></dd>
@@ -13,11 +13,10 @@
  <dd><%= @reservation.total_price=@room.price.to_i*@reservation.people*@reservation.total_day%></dd>
 </dl>
 
-<%= form_with model: @reservation, local: true do |f| %>
-
   <%=f.hidden_field :room_id, value:@room.id%>
   <%=f.hidden_field :user_id, value:current_user.id%>
   <%=f.hidden_field :total_price, :value=>@reservation.total_price%>
+  <%=f.hidden_field :people, :value=>@reservation.people%>
   <%=f.hidden_field :title, :value=>@room.title%>
   <%=f.hidden_field :img, :value=>@room.img%>
   <%=f.hidden_field :about, value:@room.about%>

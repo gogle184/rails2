@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user,{only:[edit,:update]}
+  before_action :authenticate_user
   def show
     @user = current_user
   end
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update!(user_params)
+    if @user.update(user_params)
       flash[:notice]="プロフィールを更新しました"
       redirect_to users_show_path
     else

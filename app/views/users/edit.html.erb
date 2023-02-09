@@ -1,6 +1,7 @@
 <h1>プロフィール編集</h1>
 
 <%= form_with model:@user do |f|%>
+ <%= render "shared/error", obj: f.object %>
  <table>
   <tr>
    <th><%= f.label :image,"画像"%></th>

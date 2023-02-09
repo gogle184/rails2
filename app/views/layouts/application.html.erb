@@ -19,9 +19,9 @@
    <header>
     <nav class="navbar Navbar">
      <div class="container-fluid">
-      <a href="#">
-       <img class="top_logo" alt="トップロゴ" src="/assets/top_logo.png">
-      </a>
+      <%=link_to root_path do%>
+       <%=image_tag "top_logo.png", class:"top_logo" %>
+      <%end%>
       <ul class="navbar-nav flex-row aligin-items-center">
        <li class="NaviItems">
         <% if user_signed_in?%>
@@ -55,20 +55,14 @@
      </div>
     </nav>
    </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
 
 <% if flash[:notice] %>
   <div class="notification is-info">
     <p class="notice"><%= notice %></p>
-  </div>
-<% end %>
-<% if flash[:alert] %>
-  <div class="notification is-danger">
     <p class="alert"><%= alert %></p>
   </div>
 <% end %>
+<%= yield %>
 
    <footer>
     <a herf="#">

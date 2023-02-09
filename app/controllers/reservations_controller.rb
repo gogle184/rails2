@@ -6,16 +6,20 @@ class ReservationsController < ApplicationController
     end
     
     def new
-        @user=current_user
-        @reservation =Reservation.new(reservation_params)
+        @reservation =Reservation.new(**reservation_params,user_id: current_user.id)
         @room=Room.find(params[:reservation][:room_id])
-        @reservation.total_day=(@reservation.end_date - @reservation.start_date).to_i
+        
+         if @reservation.invalid?
+            render "rooms/show"
+         else
+            @reservation.total_day=(@reservation.end_date - @reservation.start_date).to_i
+         end
     end
 
     def create
-        @user=current_user
-        @reservation = Reservation.new(reservation_params)
-        if @reservation.save
+        @reservation = Reservation.new(**reservation_params,user_id: current_user.id)
+        @room=Room.find(params[:reservation][:room_id])
+        if @reservation.save!
             flash[:notice]="予約完了"
             redirect_to reservations_path
         else
