@@ -8,9 +8,10 @@ class Reservation < ApplicationRecord
     validate :start_end_check  
 
     def start_end_check
-        if start_date.present? && end_date.present?&& start_date>end_date 
+        if start_date.present? && end_date.present? && start_date>end_date 
             errors.add(:end_date,"はチェックインより前の日付は登録できません")
-        elsif start_date=end_date
+            #「=」が１つになってました。
+        elsif start_date.present? && end_date.present? && start_date==end_date
             errors.add(:end_date,"をチェックインと同日にはできません※(日帰りは行っておりません)※")
         end
     end
