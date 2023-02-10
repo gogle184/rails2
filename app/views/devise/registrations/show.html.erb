@@ -1,0 +1,23 @@
+<h1>アカウント情報</h1>
+
+<div class="UserContainer">
+ <ul class="SideNavi">
+  <li><%= link_to"プロフィール",users_show_path%></li>
+  <li><%= link_to"ログイン情報編集",users_account_path%></li>
+ </ul>
+ <div class="account">
+  <div class="UserHeader">
+   <h3>アカウント</h3>
+   <%= link_to"編集",edit_user_registration_path%>
+  </div>
+  <div class="UserInfomation">
+   <h3>メールアドレス</h3>
+   <%= current_user.email%>
+  </div>
+  <div class="UserInfomation">
+   <h3>パスワード</h3>
+   *********
+  </div>
+
+ </div>
+</div>

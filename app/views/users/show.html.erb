@@ -1,0 +1,25 @@
+<h1>設定</h1>
+
+<div class="UserContainer">
+ <ul class="SideNavi">
+  <li><%= link_to"プロフィール",users_show_path%></li>
+  <li><%= link_to"ログイン情報編集",users_account_path(current_user)%></li>
+ </ul>
+ <div class="account">
+  <div class="UserHeader">
+   <h3>ユーザー情報</h3>
+   <%= link_to"編集",edit_user_path(current_user)%>
+  </div>
+  <div class="UserInfomation">
+   <h3>アイコン画像</h3>
+   <%= image_tag current_user.image_url(:image_large) ,alt:"user-icon",class:"user-icon" %>
+  </div>
+  <div class="UserInfomation">
+   <h3>名前</h3>
+   <%= @user.name%>
+   <h3>自己紹介</h3>
+   <%= @user.profile%>
+  </div>
+
+ </div>
+</div>
