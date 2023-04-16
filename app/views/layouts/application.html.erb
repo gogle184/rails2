@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Kadai2</title>
+    <title>Rails 実践課題②</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+   <header>
+    <nav class="navbar Navbar">
+     <div class="container-fluid">
+      <%=link_to root_path do%>
+       <%=image_tag "top_logo.png", class:"top_logo" %>
+      <%end%>
+      <ul class="navbar-nav flex-row aligin-items-center">
+       <li class="NaviItems">
+        <% if user_signed_in?%>
+
+         <% if current_user.image %>
+          <%= image_tag current_user.image.url,class:"top-icon"%>
+         <% else %>
+          <%= image_tag 'default.png', size: "30x30" %>
+         <% end %>
+
+        <div class="nav-item dropdown">
+         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+          <%= current_user.name%>
+          <span class="caret"></span></button>
+          <ul class="header-nav-menus nav-menus dropdown-menu">
+           <li class="menu_li"><%=link_to "部屋登録",new_room_path%></li>
+           <li class="menu_li"><%=link_to "予約済みルーム一覧",reservations_path%></li>
+           <li class="menu_li"><%=link_to"登録済みルーム一覧",rooms_path%></li>
+           <li class="menu_li"><%=link_to"設定",users_show_path%></li>
+           <li class="menu_li"><%= link_to "ログアウト",destroy_user_session_path, method: :delete%></li>
+          </ul>
+        </div>
+        
+
+        <% else %>
+          <%= link_to "ログイン",new_user_session_path %>
+          <%= link_to "新規登録",new_user_registration_path %>
+        <% end %>
+
+      </ul>
+     </div>
+    </nav>
+   </header>
+
+<% if flash[:notice] %>
+  <div class="notification is-info">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+<% end %>
+<%= yield %>
+
+   <footer>
+    <a herf="#">
+     <img class="Footer_logo "alt="トップロゴ" src="/assets/top_logo.png">
+    </a>
+    <p class="Fotter_copyright">Copyright</p>
+   </footer>
+    
   </body>
 </html>
